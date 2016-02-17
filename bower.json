@@ -1,0 +1,29 @@
+{
+  "name": "Craft Starter",
+  "version": "0.1",
+  "authors": [
+    "Khoa Pham"
+  ],
+  "description": "Boilerplate template for CraftCMS",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "Bourbon",
+    "Neat",
+    "CraftCMS"
+  ],
+  "license": "MIT",
+  "homepage": "http://khoapham.me",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
