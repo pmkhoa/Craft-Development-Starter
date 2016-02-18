@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
 var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
+var browserSync = require('browser-sync').create();
 var pagespeed = require('psi');
 var reload = browserSync.reload;
 
@@ -38,7 +38,7 @@ gulp.task('scripts', function () {
 	//uglify to public
 	.pipe($.uglify())
 	.pipe(gulp.dest('html/assets/js'))
-	.pipe($.livereload());
+    .pipe(browserSync.stream());
 });
 
 
@@ -58,7 +58,7 @@ gulp.task('styles', function () {
 	// Concatenate and minify styles
 	.pipe(gulp.dest('html/assets/css'))
 	.pipe($.size({title: 'styles'}))
-	.pipe($.livereload());
+    .pipe(browserSync.stream());
 });
 
 // Optimize Images
@@ -78,10 +78,8 @@ gulp.task('images', function () {
 // Uncomment proxy and change to dev site local url
 gulp.task('default', ['styles', 'scripts'], function () {
 
-  // $.livereload.listen();
-
-  browserSync({
-	  proxy: "http://localhost.com"
+  browserSync.init({
+      port: 9000,
   });
 
   gulp.watch(['craft/templates/**/*.html'], reload);
