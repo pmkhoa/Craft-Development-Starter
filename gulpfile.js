@@ -52,8 +52,7 @@ gulp.task('styles', function () {
 	.pipe($.changed('styles', {extension: '.scss'}))
 	.pipe($.sass({
 	  precision: 10,
-	  onError: console.error.bind(console, 'Sass error:')
-	}))
+	}).on('error', $.sass.logError))
 	.pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
 	// Concatenate and minify styles
 	.pipe(gulp.dest('html/assets/css'))
